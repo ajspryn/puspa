@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -78,18 +77,26 @@
 
                         <li class="maximize"><a class="text-dark" href="#!"
                                 onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
-                        <li class="profile-nav onhover-dropdown p-0 me-0">
-                            <div class="media profile-media"><img class="b-r-10"
-                                    src="assets/images/dashboard/profile.jpg" alt="">
-                                <div class="media-body"><span>Adji Supriyono</span>
-                                    <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
+                        @auth
+                            <li class="profile-nav onhover-dropdown p-0 me-0">
+                                <div class="media profile-media"><img class="b-r-10"
+                                        src="assets/images/dashboard/profile.jpg" alt="">
+                                    <div class="media-body"><span>{{ Auth::user()->name }}</span>
+                                        <p class="mb-0 font-roboto">{{ Auth::user()->email }} <i
+                                                class="middle fa fa-angle-down"></i></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="profile-dropdown onhover-show-div">
-                                <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-                                <li><a href="login.html"><i data-feather="log-in"> </i><span>Log in</span></a></li>
-                            </ul>
-                        </li>
+                                <ul class="profile-dropdown onhover-show-div">
+                                    <li><a href="#"><i data-feather="user"></i><span>Profile </span></a></li>
+                                    <form method="POST" action="/logout">
+                                        @csrf
+                                        <li><a href="#"
+                                                onclick="event.preventDefault(); this.closest('form').submit();"><i
+                                                    data-feather="log-out"> </i><span>Log Out</span></a></li>
+                                    </form>
+                                </ul>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
