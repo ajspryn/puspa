@@ -26,14 +26,27 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="form theme-form">
-                                <form action="/kegiatan" method="POST">
+                            <div class="form theme-form"> 
+                                <form action="/kegiatan/{{ $kegiatans->id }}" method="POST" enctype="multipart/form-data">
+                                    @method('put')
                                     @csrf
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Nama Kegiatan</label>
-                                                <input name="nama" class="form-control" type="text" required>
+                                                <input name="nama" class="form-control" type="text" value ="{{ $kegiatans->nama}}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="col-sm-3 col-form-label">Upload Foto</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="file" name="foto">
+                                                    <input type="hidden" id="EditUserFirstName" name="fotolama"
+                                                    value="{{ $kegiatans->foto }}" class="form-control" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -41,7 +54,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Deskripsi Kegiatan</label>
-                                                <textarea name="deskripsi" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                                <input name="deskripsi" class="form-control"type="text" value="{{ $kegiatans->deskripsi }}">
                                             </div>
                                         </div>
                                     </div>
@@ -49,7 +62,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Tujuan Dan Manfaat</label>
-                                                <textarea name="tujuan_dan_manfaat" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                                <input name="tujuan_dan_manfaat" class="form-control"type="text" value="{{ $kegiatans->tujuan_dan_manfaat }}">
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +70,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Pihak Yang Terlibat</label>
-                                                <textarea name="pihak_yang_terlibat" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                                <input name="pihak_yang_terlibat" class="form-control"type="text" value="{{ $kegiatans->pihak_yang_terlibat }}">
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +78,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Kebutuhan Sumberdaya</label>
-                                                <textarea name="kebutuhan_sumberdaya" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                                <input name="kebutuhan_sumberdaya" class="form-control"type="text" value="{{ $kegiatans->kebutuhan_sumberdaya }}">
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +94,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Sasaran Kegiatan</label>
-                                                <input name="sasaran" class="form-control" type="text">
+                                                <input name="sasaran" class="form-control" type="text" value ="{{ $kegiatans->sasaran}}">
                                             </div>
                                         </div>
                                     </div>
@@ -90,6 +103,19 @@
                                             <div class="mb-3">
                                                 <label>Status Kegiatan</label>
                                                 <select class="form-select" name="status_tahapan">
+                                                    @if ($status==1)
+                                                    <option value="1">1. Rumusan ide</option>
+                                                    @elseif($status==2)
+                                                    <option value="2">2. Perencanaan</option>   
+                                                    @elseif($status==3)
+                                                    <option value="3">3. Persiapan</option> 
+                                                    @elseif($status==4)
+                                                    <option value="4">4. Pembangunan</option> 
+                                                    @elseif($status==5)
+                                                    <option value="5">5. Penerapan</option>
+                                                    @else
+                                                    <option value="6">6. Evaluasi</option>
+                                                    @endif
                                                     <option></option>
                                                     <option value="1">1. Rumusan ide</option>
                                                     <option value="2">2. Perencanaan</option>
@@ -103,7 +129,15 @@
                                         <div class="col-sm-6">
                                             <div class="mb-3">
                                                 <label>Persentase Progres</label>
-                                                <input name="persentase_progres" class="form-control" type="number">
+                                                <input name="persentase_progres" class="form-control" type="number" value="{{ $kegiatans->persentase_progres }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label>Keterangan Status Kegiatan</label>
+                                                <input name="keterangan_status_kegiatan" class="form-control"type="text" value="{{ $kegiatans->keterangan_status_kegiatan }}">
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +145,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Analisis Resiko</label>
-                                                <textarea name="analisis_resiko" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                                <input name="analisis_resiko" class="form-control"type="text" value="{{ $kegiatans->analisis_resiko }}">
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +153,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Strategi Menjaga Keberlangsungan</label>
-                                                <textarea name="strategi_menjaga_keberlangsungan" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                                <input name="strategi_menjaga_keberlangsungan" class="form-control" type="text" value="{{ $kegiatans->strategi_menjaga_keberlangsungan }}">
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +161,19 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Indikator Keberhasilan</label>
-                                                <textarea name="indikator_keberhasilan" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                                <input name="indikator_keberhasilan" class="form-control" type="text" value="{{ $kegiatans->indikator_keberhasilan }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="col-sm-3 col-form-label">Upload Lampiran</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="file" name="lampiran">
+                                                    <input type="hidden" id="EditUserFirstName" name="lampiranlama"
+                                                    value="{{ $kegiatans->lampiran }}" class="form-control" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

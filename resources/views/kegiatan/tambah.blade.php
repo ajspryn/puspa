@@ -27,13 +27,23 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form theme-form">
-                                <form action="/kegiatan" method="POST">
+                                <form action="/kegiatan" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label>Nama Kegiatan</label>
                                                 <input name="nama" class="form-control" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="col-sm-3 col-form-label">Upload Foto</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="file" name="foto">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -110,6 +120,14 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
+                                                <label>Keterangan Status Kegiatan</label>
+                                                <textarea name="keterangan_status_kegiatan" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
                                                 <label>Analisis Resiko</label>
                                                 <textarea name="analisis_resiko" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
                                             </div>
@@ -128,6 +146,16 @@
                                             <div class="mb-3">
                                                 <label>Indikator Keberhasilan</label>
                                                 <textarea name="indikator_keberhasilan" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="col-sm-3 col-form-label">Upload Lampiran</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" type="file" name="lampiran">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
