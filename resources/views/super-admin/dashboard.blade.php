@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('super-admin.layouts.main')
 
 @section('content')
     <div class="page-body">
@@ -48,11 +48,11 @@
                         <div class="card-header">
                             <div class="header-top">
                                 <h5 class="m-0">Kegiatan Terbaru</h5>
-                            </div>
+                             </div>
                         </div>
                         <div class="card-body p-0">
-                            @foreach ($kegiatans as $kegiatan)
-                                <div class="news-update media">
+                            <div class="news-update media">
+                                @foreach ($kegiatans as $kegiatan)
                                     <div class="media-body">
                                         <h6>{{ $kegiatan->nama }}</h6>
                                         <span>{{ Str::limit($kegiatan->slug, 50) }}</span>
@@ -60,8 +60,8 @@
                                             <i data-feather="clock"></i>{{ $kegiatan->created_at->diffForHumans() }}
                                         </span>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                         <div class="card-footer">
                             <div class="bottom-btn"><a href="/kegiatan">Lihat Semua</a></div>
@@ -127,6 +127,44 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <div class="row">
+              <!-- Zero Configuration  Starts-->
+              <div class="col-sm-12">
+                <div class="card">
+                  {{-- <div class="card-header">
+                    <h5>Zero Configuration</h5><span>DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function:<code>$().DataTable();</code>.</span><span>Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</span>
+                  </div> --}}
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="display" id="basic-1">
+                        <thead>
+                          <tr>
+                            <th>Kegiatan</th>
+                            <th>Mitra</th>
+                            <th>Tujuan Dan Manfaat</th>
+                            <th>Sasaran Kegiatan</th>
+                            <th>Tahap Kegiatan</th>
+                            <th>Persentase</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($kegiatans as $kegiatan)
+                            <tr>
+                                <td>{{ $kegiatan->nama }}</td>
+                                <td>Dinas KPPPA Kab Bogor</td>
+                                <td>{{ $kegiatan->tujuan_dan_manfaat }}</td>
+                                <td>{{ $kegiatan->sasaran }}</td>
+                                <td>{{ $kegiatan->status_tahapan }}</td>
+                                <td>{{ $kegiatan->persentase_progres }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
         <!-- Container-fluid Ends-->
     </div>
 @endsection

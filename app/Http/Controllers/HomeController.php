@@ -26,35 +26,33 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::user()){
-            $role=Role::select()->where('user_id',Auth::user()->id)->get()->first();
-        }else{
-            $role=false;
+        if (Auth::user()) {
+            $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+        } else {
+            $role = false;
         }
 
-        $url='/';
+        $url = '/';
 
-        if ($role){
-            if ($role->jabatan_id==0) {
-                    $url='/admin';
+        if ($role) {
+            // super admin
+            if ($role->role_id == 0) {
+                return view('super-admin.dashboard', [
+                    'kegiatans' => ForumKegiatan::all(),
+                ]);
+            // admin
+            } elseif ($role->jabatan_id == 1) {
+                $url = '/admin';
+            // pembina
+            } elseif ($role->jabatan_id == 2) {
+                $url = '/pembina';
+            // anggota 
+            } else {
+                return view('index', [
+                    'kegiatans' => ForumKegiatan::select()->get(),
+                ]);
             }
-            elseif ($role->jabatan_id==1) {
-                    $url='/mahasiswa';
-            }
-            elseif ($role->jabatan_id==2) {
-                    $url='/umkm';
-            }
-            elseif ($role->jabatan_id==3) {
-                    $url='/ppr';
-            }
-            elseif ($role->jabatan_id==4) {
-                    $url='/staff';
-            }
-            else{
-                $url='/';
-            }
-        }
-        else{
+        } else {
             return view('index', [
                 'kegiatans' => ForumKegiatan::select()->get(),
             ]);
