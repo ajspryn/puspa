@@ -48,46 +48,23 @@
                         <div class="card-header">
                             <div class="header-top">
                                 <h5 class="m-0">Kegiatan Terbaru</h5>
-                                <div class="card-header-right-icon">
-                                    <div class="dropdown">
-                                        <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Today</button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"><a
-                                                class="dropdown-item" href="#">Today</a><a class="dropdown-item"
-                                                href="#">Tomorrow</a><a class="dropdown-item"
-                                                href="#">Yesterday</a></div>
-                                    </div>
-                                </div>
-                            </div>
+                             </div>
                         </div>
                         <div class="card-body p-0">
-                            <div class="news-update media"><img class="img-fluid me-3 b-r-10"
-                                    src="../assets/images/dashboard/update/1.jpg" alt="">
-                                <div class="media-body">
-                                    <h6>Lorem Ipsum is simply dummy</h6><span>Lorem Ipsum is simply
-                                        dummy...</span><span class="time-detail d-block"><i data-feather="clock"></i>10
-                                        Minutes Ago</span>
-                                </div>
-                            </div>
-                            <div class="news-update media"><img class="img-fluid me-3 b-r-10"
-                                    src="../assets/images/dashboard/update/2.jpg" alt="">
-                                <div class="media-body">
-                                    <h6>Lorem Ipsum is simply dummy</h6><span> Lorem Ipsum is simply text of the
-                                        printing... </span><span class="time-detail d-block"><i data-feather="clock"></i>1
-                                        Hour Ago</span>
-                                </div>
-                            </div>
-                            <div class="news-update media"><img class="img-fluid me-3 b-r-10"
-                                    src="../assets/images/dashboard/update/3.jpg" alt="">
-                                <div class="media-body">
-                                    <h6>Lorem Ipsum is simply dummy</h6><span>Lorem Ipsum is simply
-                                        dummy...</span><span class="time-detail d-block"><i data-feather="clock"></i>8
-                                        Hours Ago</span>
-                                </div>
+                            <div class="news-update media">
+                                @foreach ($kegiatans as $kegiatan)
+                                    <div class="media-body">
+                                        <h6>{{ $kegiatan->nama }}</h6>
+                                        <span>{{ Str::limit($kegiatan->slug, 50) }}</span>
+                                        <span class="time-detail d-block">
+                                            <i data-feather="clock"></i>{{ $kegiatan->created_at->diffForHumans() }}
+                                        </span>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="card-footer">
-                            <div class="bottom-btn"><a href="#">See all</a></div>
+                            <div class="bottom-btn"><a href="/kegiatan">Lihat Semua</a></div>
                         </div>
                     </div>
                 </div>
@@ -97,7 +74,7 @@
                             <div class="media static-top-widget">
                                 <div class="media-body">
                                     <h6 class="font-roboto">Jumlah Mitra</h6>
-                                    <h4 class="mb-0 counter">6659</h4>
+                                    <h4 class="mb-0 counter">1</h4>
                                 </div>
                             </div>
                             <div class="progress-widget">
@@ -116,7 +93,7 @@
                             <div class="media static-top-widget">
                                 <div class="media-body">
                                     <h6 class="font-roboto">Jumlah Forum</h6>
-                                    <h4 class="mb-0 counter">9856</h4>
+                                    <h4 class="mb-0 counter">0</h4>
                                 </div>
                             </div>
                             <div class="progress-widget">
@@ -135,7 +112,7 @@
                             <div class="media static-top-widget">
                                 <div class="media-body">
                                     <h6 class="font-roboto">Jumlah Kegiatan</h6>
-                                    <h4 class="mb-0 counter">893</h4>
+                                    <h4 class="mb-0 counter">0</h4>
                                 </div>
                             </div>
                             <div class="progress-widget">

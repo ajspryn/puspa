@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ForumKegiatan;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,7 +55,9 @@ class HomeController extends Controller
             }
         }
         else{
-            return view('index');
+            return view('index', [
+                'kegiatans' => ForumKegiatan::select()->get(),
+            ]);
         }
         return Redirect($url);
     }

@@ -1,14 +1,14 @@
 <!-- Page Sidebar Start-->
             <div class="sidebar-wrapper">
                 <div>
-                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
+                    <div class="logo-wrapper"><a href="/"><img class="img-fluid for-light"
                                 src="assets/images/kpppa.png" width="50" alt=""><img
                                 class="img-fluid for-dark" src="assets/images/logo/logo_dark.png" alt=""></a>
                         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
                         <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle"
                                 data-feather="grid"> </i></div>
                     </div>
-                    <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid"
+                    <div class="logo-icon-wrapper"><a href="/"><img class="img-fluid"
                                 src="assets/images/kpppa.png" width="50" alt=""></a></div>
                     <nav class="sidebar-main">
                         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
@@ -26,12 +26,12 @@
                                     </div>
                                 </li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                                        href="index.html"><i data-feather="home"> </i><span>Dashboard</span></a></li>
+                                        href="/"><i data-feather="home"> </i><span>Dashboard</span></a></li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                                        href="anggota.html"><i data-feather="users"> </i><span>Anggota
+                                        href="/anggota"><i data-feather="users"> </i><span>Anggota
                                             Forum</span></a></li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                                        href="inovasi.html"><i data-feather="check-square">
+                                        href="/kegiatan"><i data-feather="check-square">
                                         </i><span>Kegiatan</span></a></li>
                             </ul>
                         </div>

@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\FormSkpdController;
+use App\Http\Controllers\ForumKegiatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +20,6 @@ Auth::routes();
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', [App\Http\Controllers\HomeController::class, 'index']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth:sanctum', 'verified'])->resource('/kegiatan', ForumKegiatanController::class);
 Route::middleware(['auth:sanctum', 'verified'])->resource('/profile', UserController::class);
 
