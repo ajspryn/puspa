@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ForumKegiatan;
+use Illuminate\Support\Facades\Storage;
 
 class ForumKegiatanController extends Controller
 {
@@ -45,18 +46,29 @@ class ForumKegiatanController extends Controller
             'tujuan_dan_manfaat' => 'required',
             'pihak_yang_terlibat' => 'required',
             'kebutuhan_sumberdaya' => 'required',
+            'keterangan_status_kegiatan' => 'nullable',
             'sasaran' => 'required',
             'status_tahapan' => 'required',
             'persentase_progres' => 'required',
             'analisis_resiko' => 'required',
             'strategi_menjaga_keberlangsungan' => 'required',
             'indikator_keberhasilan' => 'required',
+            'foto' => 'nullable',
+            'lampiran' => 'nullable',
         ]);
 
         $validate['slug']= Str::limit($request->deskripsi, 150);
+        
+        $validate = $request->all();
 
-        // $input = $request->all();
-
+        if($request->file('foto')){
+            $validate['foto'] = $request->file('foto')->store('foto-kegiatan');
+        }
+        
+        if($request->file('lampiran')){
+            $validate['lampiran'] = $request->file('lampiran')->store('lampiran-kegiatan');
+        }
+        
         ForumKegiatan::create($validate);
         return redirect('/kegiatan');
 
@@ -82,8 +94,11 @@ class ForumKegiatanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   $kegiatan=ForumKegiatan::select()->where('id',$id)->get()->first();
+        return view('kegiatan.edit',[
+            'kegiatans'=>ForumKegiatan::select()->where('id',$id)->get()->first(),
+            'status'=>$kegiatan->status_tahapan,
+        ]);
     }
 
     /**
@@ -94,8 +109,56 @@ class ForumKegiatanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $validate=$request->validate([
+        'nama' => 'required',
+        'deskripsi' => 'required',
+        'tujuan_dan_manfaat' => 'required',
+        'pihak_yang_terlibat' => 'required',
+        'kebutuhan_sumberdaya' => 'required',
+        'sasaran' => 'required',
+        'keterangan_status_kegiatan'=> 'nullable',
+        'status_tahapan' => 'required',
+        'persentase_progres' => 'required',
+        'analisis_resiko' => 'required',
+        'strategi_menjaga_keberlangsungan' => 'required',
+        'indikator_keberhasilan' => 'required',
+    ]);
+
+    $validate['slug']= Str::limit($request->deskripsi, 150);
+
+    ForumKegiatan::where('id',$id)->update($validate);
+
+    if ($request->file('foto')) {
+        if ($request->fotolama) {
+            Storage::delete($request->fotolama);
+        }
+        $foto = $request->file('foto')->store('foto-kegiatan');
+
+        ForumKegiatan::where('id',$id)->update([
+            'foto'=> $foto,
+        ]);
+    }
+    else{
+
+    }
+    ForumKegiatan::where('id',$id)->update($validate);
+
+    if ($request->file('lampiran')) {
+        if ($request->lampiranlama) {
+            Storage::delete($request->lampiranlama);
+        }
+        $lampiran = $request->file('lampiran')->store('lampiran-kegiatan');
+
+        ForumKegiatan::where('id',$id)->update([
+            'lampiran'=> $lampiran,
+        ]);
+    }
+    else{
+
+    }
+    
+    return redirect('/kegiatan');
     }
 
     /**

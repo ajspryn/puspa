@@ -67,6 +67,10 @@
                                         @foreach ($kegiatans as $kegiatan)
                                         <div class="col-xxl-4 col-lg-6">
                                             <div class="project-box"><span class="badge badge-primary">Tahap {{ $kegiatan->status_tahapan }}</span>
+                                                @if($kegiatan->foto)
+                                                <img class="img-fluid rounded mb-75"
+                                                src="{{ asset('storage/' . $kegiatan->foto) }}"alt="avatar img" />
+                                                @endif
                                                 <h6>{{ $kegiatan->nama }}</h6>
                                                 <div class="media">
                                                     <div class="media-body">
