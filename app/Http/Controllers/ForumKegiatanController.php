@@ -17,7 +17,8 @@ class ForumKegiatanController extends Controller
     public function index()
     {
         return view('kegiatan.index',[
-            'kegiatans'=>ForumKegiatan::all(),
+            'kegiatans'=>ForumKegiatan::select()->skip(0)->take(4)->orderby('created_at','desc')->get(),
+            'skegiatan'=>ForumKegiatan::all(),
         ]);
     }
 

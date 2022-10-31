@@ -229,6 +229,93 @@
                         </div>
                     </div>
                 </div>
+                <div class="container-fluid">
+                    <div class="row">
+                      <!-- Zero Configuration  Starts-->
+                      <div class="col-sm-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h5>Daftar Kegiatan</h5>
+                          </div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="display" id="basic-1">
+                                <thead>
+                                  <tr>
+                                    <th >Nama Kegiatan</th>
+                                    <th style="text-align: center">Tahap</th>
+                                    <th style="text-align: center">Perkembangan Tahapan</th>
+                                    <th style="text-align: center">Total Progres</th>
+                                    <th style="text-align: center">Aksi</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($skegiatan as $daftarkegiatan)
+                                    @php
+                                    $query=app\Models\ForumKegiatan::Select()->where('id',$daftarkegiatan->id)->get()->first();
+                                    if ($query->status_tahapan == 1) {
+                                        $score=15;
+                                    }elseif ($query->status_tahapan == 2) {
+                                        $score=30;
+                                    }elseif ($query->status_tahapan == 3) {
+                                        $score=45;
+                                    }elseif ($query->status_tahapan == 4) {
+                                        $score=70;
+                                    }elseif ($query->status_tahapan == 5) {
+                                        $score=85;
+                                    }elseif ($query->status_tahapan == 6) {
+                                        $score=100;
+                                    }
+
+                                    $progres=$score/100*$kegiatan->persentase_progres;
+                                @endphp
+                                    <tr>
+                                        <td>{{ $daftarkegiatan->nama }}</td>
+                                        <td >
+                                        @if ($daftarkegiatan->status_tahapan==1)
+                                        Rumusan ide
+                                        @elseif($daftarkegiatan->status_tahapan==2)
+                                        Perencanaan   
+                                        @elseif($daftarkegiatan->status_tahapan==3)
+                                        Persiapan 
+                                        @elseif($daftarkegiatan->status_tahapan==4)
+                                        Pembangunan 
+                                        @elseif($daftarkegiatan->status_tahapan==5)
+                                        Penerapan
+                                        @else
+                                        Evaluasi
+                                        @endif
+                                        <td style="text-align: center">{{ $daftarkegiatan->persentase_progres }} % </td>
+                                        <td style="text-align: center">{{ $progres }} %</td>
+                                        <td style="text-align: center">
+                                            <ul>
+                                            <li>
+                                                <!-- Detail-->
+                                                <a class="btn btn-primary btn-sm"
+                                                    href="/kegiatan/{{ $kegiatan->id }}">Lihat</a>
+                                            </li>
+                                            <li>
+                                                <a class="btn btn-warning btn-sm"
+                                                    href="/kegiatan/{{ $kegiatan->id }}/edit"></i>Ubah</a>
+                                            </li>
+                                            <li>
+                                                <form action="/kegiatan/{{ $kegiatan->id }}" method="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm"
+                                                    type="submit"></i>Hapus</button>
+                                                </form>
+                                            </li>
+                                        </ul></td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Zero Configuration  Ends-->
             </div>
         </div>
         <!-- Container-fluid Ends-->

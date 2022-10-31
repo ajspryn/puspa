@@ -44,6 +44,10 @@
     <script src="{{ url('/') }}/assets/js/typeahead-search/handlebars.js"></script>
     <script src="{{ url('/') }}/assets/js/typeahead-search/typeahead-custom.js"></script>
     <script src="{{ url('/') }}/assets/js/tooltip-init.js"></script>
+    <script src="{{ url('/') }}/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ url('/') }}/assets/js/datatable/datatables/datatable.custom.js"></script>
+    <script src="{{ url('/') }}/assets/js/script.js"></script>
+    <script src="{{ url('/') }}/assets/js/theme-customizer/customizer.js"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{ url('/') }}/assets/js/script.js"></script>

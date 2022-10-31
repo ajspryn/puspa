@@ -28,6 +28,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/css/vendors/date-picker.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/css/vendors/dropzone.css">
     <!-- Plugins css Ends-->
+      <!-- Plugins css start-->
+      <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/css/vendors/scrollbar.css">
+      <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/css/vendors/datatables.css">
+      <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/assets/css/vendors/bootstrap.css">
     <!-- App css-->
