@@ -29,7 +29,6 @@ Route::get('/anggotadetail', function () {
 Route::middleware(['auth:sanctum', 'verified'])->resource('/kegiatan', ForumKegiatanController::class);
 Route::middleware(['auth:sanctum', 'verified'])->resource('/profile', UserController::class);
 
-
 // route super admin
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'role:0'])->group(function () {
     Route::resource('/anggota', AnggotaForumController::class);
