@@ -48,7 +48,7 @@
                         <div class="card-header">
                             <div class="header-top">
                                 <h5 class="m-0">Kegiatan Terbaru</h5>
-                             </div>
+                            </div>
                         </div>
                         <div class="card-body p-0">
                             <div class="news-update media">
@@ -129,42 +129,42 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-              <!-- Zero Configuration  Starts-->
-              <div class="col-sm-12">
-                <div class="card">
-                  {{-- <div class="card-header">
+                <!-- Zero Configuration  Starts-->
+                <div class="col-sm-12">
+                    <div class="card">
+                        {{-- <div class="card-header">
                     <h5>Zero Configuration</h5><span>DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function:<code>$().DataTable();</code>.</span><span>Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</span>
                   </div> --}}
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="display" id="basic-1">
-                        <thead>
-                          <tr>
-                            <th>Kegiatan</th>
-                            <th>Mitra</th>
-                            <th>Tujuan Dan Manfaat</th>
-                            <th>Sasaran Kegiatan</th>
-                            <th>Tahap Kegiatan</th>
-                            <th>Persentase</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($kegiatans as $kegiatan)
-                            <tr>
-                                <td>{{ $kegiatan->nama }}</td>
-                                <td>Dinas KPPPA Kab Bogor</td>
-                                <td>{{ $kegiatan->tujuan_dan_manfaat }}</td>
-                                <td>{{ $kegiatan->sasaran }}</td>
-                                <td>{{ $kegiatan->status_tahapan }}</td>
-                                <td>{{ $kegiatan->persentase_progres }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                      </table>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="display" id="basic-1">
+                                    <thead>
+                                        <tr>
+                                            <th>Kegiatan</th>
+                                            <th>Mitra</th>
+                                            <th>Tujuan Dan Manfaat</th>
+                                            <th>Sasaran Kegiatan</th>
+                                            <th>Tahap Kegiatan</th>
+                                            <th>Persentase</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($kegiatans as $kegiatan)
+                                            <tr>
+                                                <td>{{ $kegiatan->nama }}</td>
+                                                <td>Dinas KPPPA Kab Bogor</td>
+                                                <td>{{ $kegiatan->tujuan_dan_manfaat }}</td>
+                                                <td>{{ $kegiatan->sasaran }}</td>
+                                                <td>{{ $kegiatan->status_tahapan }}</td>
+                                                <td>{{ $kegiatan->persentase_progres }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-        <!-- Container-fluid Ends-->
-    </div>
-@endsection
+                <!-- Container-fluid Ends-->
+            </div>
+        @endsection

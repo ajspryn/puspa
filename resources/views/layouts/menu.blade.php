@@ -27,9 +27,9 @@
                                 </li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
                                         href="/"><i data-feather="home"> </i><span>Dashboard</span></a></li>
-                                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
+                                {{-- <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
                                         href="/anggota"><i data-feather="users"> </i><span>Anggota
-                                            Forum</span></a></li>
+                                            Forum</span></a></li> --}}
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
                                         href="/kegiatan"><i data-feather="check-square">
                                         </i><span>Kegiatan</span></a></li>

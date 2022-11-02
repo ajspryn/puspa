@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->nullable();
             $table->integer('role_id')->nullable();
-            $table->integer('divisi_id')->nullable();
-            $table->integer('jabatan_id')->nullable();
+            $table->integer('mitra_id')->nullable();
+            $table->integer('tingkatan_id')->nullable();
             $table->timestamps();
         });
     }

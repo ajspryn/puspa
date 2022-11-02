@@ -21,8 +21,12 @@ class Role
         $cekrole=DB::table('roles')->where('user_id', Auth::user()->id)->get()->first();
         // return $cekrole;
         // ddd ($cekrole);
-        if($cekrole->role_id==$role){
-            return $next($request);
+        if($cekrole){
+            if($cekrole->role_id==$role){
+                return $next($request);
+            }else{
+                return redirect('/');
+            }
         }
         return redirect('/');
     }

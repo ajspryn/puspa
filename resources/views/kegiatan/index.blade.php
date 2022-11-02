@@ -6,14 +6,14 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-6">
-                        <h3>Dashboard</h3>
+                        <h3>Kegiatan</h3>
                     </div>
                     <div class="col-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html"> <i data-feather="home"></i></a>
                             </li>
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Kegiatan</li>
                         </ol>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($skegiatan as $daftarkegiatan)
+                                    @foreach ($skegiatan->skip(4) as $daftarkegiatan)
                                     @php
                                     $query=app\Models\ForumKegiatan::Select()->where('id',$daftarkegiatan->id)->get()->first();
                                     if ($query->status_tahapan == 1) {
@@ -275,11 +275,11 @@
                                         @if ($daftarkegiatan->status_tahapan==1)
                                         Rumusan ide
                                         @elseif($daftarkegiatan->status_tahapan==2)
-                                        Perencanaan   
+                                        Perencanaan
                                         @elseif($daftarkegiatan->status_tahapan==3)
-                                        Persiapan 
+                                        Persiapan
                                         @elseif($daftarkegiatan->status_tahapan==4)
-                                        Pembangunan 
+                                        Pembangunan
                                         @elseif($daftarkegiatan->status_tahapan==5)
                                         Penerapan
                                         @else
@@ -291,18 +291,18 @@
                                             <ul>
                                             <li>
                                                 <!-- Detail-->
-                                                <a class="btn btn-primary btn-sm"
+                                                <a class="btn btn-primary btn-sm mt-1"
                                                     href="/kegiatan/{{ $kegiatan->id }}">Lihat</a>
                                             </li>
                                             <li>
-                                                <a class="btn btn-warning btn-sm"
-                                                    href="/kegiatan/{{ $kegiatan->id }}/edit"></i>Ubah</a>
+                                                <a class="btn btn-warning btn-sm mt-1"
+                                                    href="/kegiatan/{{ $kegiatan->id }}/edit">Ubah</a>
                                             </li>
                                             <li>
                                                 <form action="/kegiatan/{{ $kegiatan->id }}" method="POST">
                                                     @method('delete')
                                                     @csrf
-                                                    <button class="btn btn-danger btn-sm"
+                                                    <button class="btn btn-danger btn-sm mt-1"
                                                     type="submit"></i>Hapus</button>
                                                 </form>
                                             </li>
